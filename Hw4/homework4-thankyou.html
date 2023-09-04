@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="homework4.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Form</title>
+</head>
+
+<!-- 
+Name: Saul Garcia
+Name of file: thankyou.html 
+Date Created: 2/14/2023 
+Date last edited: 5/7/2023
+Description: This file is the html structure for the confirmation page upon successful sign-up in the previous page's form
+-->
+
+<body>
+
+    <div class="header">
+        <br>
+        <img src="logo_transparent.png" height="170" valign="bottom"> 
+        <p align="right"> Today's Date: <span id="today"> any </span> </p>
+    </div>
+    
+    <div class="navbar">
+        <a href="#"> Buy </a>
+        <a href="#"> Sell </a>
+        <a href="#"> Rent </a>
+        <a href="#"> Nearby Listings </a>
+        <a href="homework4.html" style="float:right"> Sign Up </a>
+        <a href="#" style="float:right"> Log In </a>
+    </div>
+
+    <div class="text">      
+        <p> Thank you for your submission. </p>
+        <p> Click <a href="homework4.html"> here </a> to return to previous page </p>
+    </div>
+
+    <iframe src="footer.html" width="100%" hieght="100%" style="border:none;"></iframe>
+
+    <script>
+        const d = new Date();
+        let text = d.toLocaleDateString();
+        document.getElementById("today").innerHTML = text;
+    </script>
+    
+</body>
+</html>

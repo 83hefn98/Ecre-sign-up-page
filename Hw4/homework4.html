@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="homework4.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User registration form</title>
+    <script src="https://kit.fontawesome.com/fd880669ed.js" crossorigin="anonymous"></script>
+</head>
+
+<!-- 
+Name: Saul Garcia
+Name of file: homework4.html 
+Date Created: 2/3/2023 
+Date last edited: 5/7/2023
+Description: This file is the html structure of a sign up form for a real estate website 
+-->
+
+<div class="header">
+    <br>
+    <img src="logo_transparent.png" height="120" valign="bottom">
+    <p align="right"> Today's Date: <span id="today"> any </span> </p>
+</div>
+
+<!-- NAVIGATION BAR -->
+<div class="navbar" id="navhead">
+    <a href="#"> Buy </a>
+    <a href="#"> Sell </a>
+    <a href="#"> Rent </a>
+    <a href="#"> Nearby Listings </a>
+    <a href="homework4.html" style="float:right"> Sign Up </a>
+    <a href="#" style="float:right"> Log In </a>
+</div>
+
+<!-- BODY -->
+<body onload="consentCookie()">
+
+<!-- MODAL BOX FOR VERIFYING COOKIE CONSENT -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()"> &times; </span>
+            <h3>Cookie Consent</h3> 
+            <p>This website uses cookies to enhance the user experience. <br> By clicking "Allow", you agree to the use of storing cookies on your device.</p>
+            
+            <table align="center">
+                <tr>
+                <td> <br> <input type="button" value="Allow" onclick="allowCookie()"> </td>
+                <td> <br> <input type="button" value="Don't allow" onclick="closeModal()"> </td>
+                </tr>
+            </table>            
+        </div>
+    </div>
+
+    <div class="container">
+        
+        <div class="leftmost">
+        </div>
+
+        <!-- FORM & TABLE SECTION -->
+        <div class="formbox">
+            <form id="signup" name = "signup" action="homework4-thankyou.html" onreset="resetdata()">
+                <table align="center" width="600" height="250" class="signup" border="0px">
+                    <tr>
+                    <td colspan="3" align="left"> <h4 class="welcometxt" id="welcometxt"><br>Welcome New User!</h4> </td>
+                    </tr>
+
+                    <tr>
+                    <td colspan="2" align="left"> <h2> Sign-in Information </h2> </td>
+                    </tr>
+                    <tr> 
+                        <td> <br> <div id="user_text" class="">User ID*</div> <input type="text" id= "user" name="UserID" pattern="^[a-zA-Z0-9_-]{5,}$" title = "Minimum 5 characters; letters, numbers, underscores(_), and dashes(-) only" oninvalid="setCustomValidity('UserID is not valid')" oninput="setCustomValidity('')" size="20" minlength="5" maxlength="20" required placeholder="(5-20 characters)" onkeyup="user_valid()"> </td>
+                    </tr>
+                    <tr>
+                        <td> <div id="pass_text" class="">Password*</div> <input type="password" id= "pass" name="Password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,}" title="Minimum 8 characters; password must contain at least one number, uppercase, and special character" oninvalid="setCustomValidity('Password is not valid')" oninput="setCustomValidity('')" size="20"  minlength="8" maxlength="20" required placeholder="(8-20 characters)" onkeyup="pass_valid()"> </td>
+                        
+                        <td> <div id="confpass_text" class="">Confirm password* </div> <input type="password" id="confpass" name="Confirm Password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,}" title="Passwords must match" oninvalid="setCustomValidity('Passwords do not match')" oninput="setCustomValidity('')" size="20" minlength="8" maxlength="20" required placeholder="(must match)" onkeyup="pass_match()"> </td>
+                        
+                    </tr>
+                    <tr>
+                        <td> <div id="email_text" class="">Email*</div> <input type="text" id="email" name="Email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" title="This field is required" oninvalid="setCustomValidity('Not a valid email address')" oninput="setCustomValidity('')" size="20" placeholder="someone@gmail.com" required onblur="email_valid()"> </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"> <br> <input type="checkbox" id="cem" name="Email Listing"> <small> Email me about potential listings/offers </small> </td>
+                    </tr>
+        
+                    <tr>
+                        <td colspan="3" align="left"> <br> <h2> Personal Information </h2> </td>
+                    </tr>
+                    <tr>
+                        <td> <div id="fname_text" class="">First name*</div> <input type="text" id="fname" name="First Name" pattern="[A-Za-z'-]+" title="Letters, apostrophes('), and dashes(-) only" oninvalid="setCustomValidity('First name is not valid')" oninput="setCustomValidity('')" size="20" minlength="1" maxlength="30" required onblur="fname_valid()"> </td>
+                        <td> <div id="mname_text" class="">M <br> </div><input type="text" id="mname" name="Mi init." pattern="[A-Za-z]+" size="1" title="Letters only (optional)" oninvalid="setCustomValidity('Middle initial is not valid')" oninput="setCustomValidity('')" maxlength="1" onblur="mname_valid()"> </td>
+                        <td> <div id="lname_text" class="">Last name*</div> <input type="text" id="lname" name="Last Name" pattern="[A-Za-z2-5'-]+" title="Letters, apostrophes('), numbers(2-5), and dashes(-) only" oninvalid="setCustomValidity('Last name is invalid')" oninput="setCustomValidity('')" size="20" minlength="1" maxlength="30" required onblur="lname_valid()"> </td>
+                    </tr>
+                    <tr>
+                        <td> <div id="ssn_text" class="">SSN*</div> <input type="password" id="ssn" name="Social Security" pattern="[0-9]{9,}" title="Minimum 9 characters; numbers only" oninvalid="setCustomValidity('Social Security is not valid')" oninput="setCustomValidity('')" size="10" minlength="9" maxlength="11" required onkeyup="ssn_valid()"> </td>
+                        <td> <div id="date_text" class="">Date of birth*</div> <input type="text" id="dob" title="This field is required" name="Date of Birth" pattern="((0[1-9]|1[0-2])\/((0|1)[0-9]|2[0-9]|3[0-1])\/((19|20)\d\d))$" size="15" required placeholder="MM/DD/YYYY" oninvalid="setCustomValidity('Date of birth does not meet required format')" oninput="setCustomValidity('')" onblur="date_valid()"> </td>
+                    </tr>
+                    <tr>
+                        <td> 
+                            <div id="state_text" class="">State*</div> 
+                            <select required id="state" name= "State" title="Please select your state" oninvalid="setCustomValidity('Please select a state from the list')" oninput="('')" onblur="state_valid()">
+                            <option value=""></option>
+                            <option value="AL">Alabama</option>
+                            <option value="AK">Alaska</option>
+                            <option value="AZ">Arizona</option>
+                            <option value="AR">Arkansas</option>
+                            <option value="CA">California</option>
+                            <option value="CO">Colorado</option>
+                            <option value="CT">Connecticut</option>
+                            <option value="DE">Delaware</option>
+                            <option value="DC">District Of Columbia</option>
+                            <option value="FL">Florida</option>
+                            <option value="GA">Georgia</option>
+                            <option value="HI">Hawaii</option>
+                            <option value="ID">Idaho</option>
+                            <option value="IL">Illinois</option>
+                            <option value="IN">Indiana</option>
+                            <option value="IA">Iowa</option>
+                            <option value="KS">Kansas</option>
+                            <option value="KY">Kentucky</option>
+                            <option value="LA">Louisiana</option>
+                            <option value="ME">Maine</option>
+                            <option value="MD">Maryland</option>
+                            <option value="MA">Massachusetts</option>
+                            <option value="MI">Michigan</option>
+                            <option value="MN">Minnesota</option>
+                            <option value="MS">Mississippi</option>
+                            <option value="MO">Missouri</option>
+                            <option value="MT">Montana</option>
+                            <option value="NE">Nebraska</option>
+                            <option value="NV">Nevada</option>
+                            <option value="NH">New Hampshire</option>
+                            <option value="NJ">New Jersey</option>
+                            <option value="NM">New Mexico</option>
+                            <option value="NY">New York</option>
+                            <option value="NC">North Carolina</option>
+                            <option value="ND">North Dakota</option>
+                            <option value="OH">Ohio</option>
+                            <option value="OK">Oklahoma</option>
+                            <option value="OR">Oregon</option>
+                            <option value="PA">Pennsylvania</option>
+                            <option value="RI">Rhode Island</option>
+                            <option value="SC">South Carolina</option>
+                            <option value="SD">South Dakota</option>
+                            <option value="TN">Tennessee</option>
+                            <option value="TX">Texas</option>
+                            <option value="UT">Utah</option>
+                            <option value="VT">Vermont</option>
+                            <option value="VA">Virginia</option>
+                            <option value="WA">Washington</option>
+                            <option value="WV">West Virginia</option>
+                            <option value="WI">Wisconsin</option>
+                            <option value="WY">Wyoming</option>
+                            </select>
+                        </td>    
+                        <td> <div id="city_text" class="">City*</div> <input type="text" id="city" name="City" pattern="[A-Za-z]+" title="Letters only" oninvalid="setCustomValidity('City is not valid')" oninput="setCustomValidity('')" size="15" minlength="2" maxlength="30" required onblur="city_valid()"> </td>
+                        <td> <div id="zip_text" class="">Zip*</div> <input type="text" id="zip" name="Zip" pattern="[0-9-]{5,}" title="Minimum 5 characters; numbers and dashes(-) only" oninvalid="setCustomValidity('Zip code is invalid')" oninput="setCustomValidity('')" size="10" minlength="5" maxlength="10" required onblur="zip_valid()"> </td>   
+                    </tr>
+                    <tr>
+                        <td> <div id="addr1_text" class="">Address Line 1*</div> <input type="text" id="addr1" name="Address 1" pattern="^[a-zA-Z0-9 ]{2,}$" title="Letters, numbers, and spaces only" size="20" minlength="2" maxlength="30" required onblur="addr1_valid()"> </td>  
+                        <td> <div id="addr2_text" class="">Address Line 2 <small>(optional)</small> </div> <input type="text" id="addr2" name="Address 2"  pattern="^[a-zA-Z0-9 ]+" title="Optional; letters, numbers, and spaces only" size="20" minlength="2" maxlength="30" onblur="addr2_valid()"> </td>  
+                    </tr>
+                   
+                    <tr>
+                        <td colspan="3" align="left"> <br> <h2> Preferences </h2> </td>
+                    </tr>
+                    <tr>
+                        <td> 
+                            I am looking to: <br><br>
+                            <input type="radio" id="buy" name="Looking To" value="Buy" > Buy
+                            <input type="radio" id="sell" name="Looking To" value="Sell"> Sell
+                            <input type="radio" id="rent" name="Looking To" value="Rent"> Rent
+                        </td>
+                        <td colspan="3"> Property Types: <br><br>
+                            <input type="checkbox" id="house" name="House">House
+                            <input type="checkbox" id="land" name="Land">Land
+                            <input type="checkbox" id="apart" name="Apartment">Apartment
+                            <input type="checkbox" id="twnhou" name="Townhouse">Townhouse
+                            <input type="checkbox" id="condo" name="Condo">Condo
+                        </td>  
+                    </tr>
+                    <tr>
+                        <td colspan="2"> 
+                            <br> <br> Preferred asking/listing price range: <br><br>
+                            $0 <input type="range" id="slider" name="Price Range" min="0" max="1000000" value="0" step ="100000" oninput="rangeValue.innerText = this.value"> $1,000,000+
+                            <p id="rangeValue">0</p> 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4"> 
+                        How did you hear about us? <small>(optional)</small> <br><br>
+                        <textarea name="Your Response" id="textbox" cols="50" rows="5"></textarea>
+                        </td>
+                    </tr>
+                </table>
+        
+                <table align="center" width="200">
+                    <tr>
+                        <td><br> <input type="reset"> </td>
+                        <td><br> <input type="button" value="Review" onclick="getform()"> </td>  
+                        <td><br> <input type="submit" id="submit" disabled onclick="createCookie()"> </td>
+                    </tr>
+                </table>
+            </form>
+        
+        <!-- For regurgitating user entered data -->
+        <p id="returndata"></p>  
+
+        </div> <!-- End of formbox class !!!! -->
+
+        <div class="rightmost">
+        </div> 
+
+    </div> <!-- End of container class !!! -->
+
+    <!-- FOOTER SECTION (using iframe now)-->
+
+    <iframe src="footer.html" width="100%" hieght="100%" style="border:none;"></iframe>
+
+    <!-- JAVASCRIPT SECTION -->
+    <script src="homework4.js"></script>
+
+    <script>
+        const d = new Date();
+        let text = d.toLocaleDateString();
+        document.getElementById("today").innerHTML = text;
+    </script>
+
+    <script>
+    window.onscroll = function() {stickfunct()};
+    var header = document.getElementById("navhead");
+    var sticky = header.offsetTop;
+
+    function stickfunct() {
+        if (window.pageYOffset > sticky) {
+            header.classList.add("stickem");
+        }
+        else {
+            header.classList.remove("stickem");
+        }
+    }
+    </script>
+
+</body>
+</html>
